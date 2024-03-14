@@ -43,3 +43,9 @@ for (var i = 1; i <= 5; i++) {
 }
 
 console.log(obj3.prototype, "dsdsl");
+
+var name = "John";
+function callThis() {
+  console.log(this.name);
+}
+callThis();
