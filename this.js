@@ -42,4 +42,4 @@ for (var i = 1; i <= 5; i++) {
   }, 0);
 }
 
-console.log(obj3._proto_, "dsdsl");
+console.log(obj3.prototype, "dsdsl");
