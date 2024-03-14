@@ -7,16 +7,15 @@ const obj = {
 };
 
 const obj2 = {
-  num: 5,
-  arrowfunc1: function () {
-    console.log(this.num);
+  arrowfunc1: () => {
+    console.log(this.num, "obj2");
   },
 };
 
-let arrowfunc1 = () => {
-  console.log(this);
-};
-arrowfunc1();
+// let arrowfunc1 = () => {
+//   console.log(this);
+// };
+// arrowfunc1();
 
 obj2.arrowfunc1();
 function arrowfunc2() {
