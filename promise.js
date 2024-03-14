@@ -22,3 +22,11 @@ function promisall(promises) {
     });
   });
 }
+
+function promiseRace(promises) {
+  return new Promise((resolve, reject) => {
+    for (let p in promises) {
+      p.then((val) => resolve(val)).catch((e) => reject(e));
+    }
+  });
+}
