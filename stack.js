@@ -13,8 +13,11 @@ class Stack {
     return true;
   }
   removeItem() {
+    if (this.ptr < 0) {
+      return false;
+    }
     this.ptr--;
-    return this.ptr;
+    return true;
   }
   peekItem() {
     return this.stack[this.ptr];
