@@ -37,10 +37,26 @@ function removeTiger(str) {
     return lastchar + removeTiger(substr);
   }
 }
+
+function removeTigNotTiger(str) {
+  if (str == "") {
+    return "";
+  }
+  let lastchar = str[0];
+  if (str.startsWith("tig") && !str.startsWith("tiger")) {
+    let substr = str.substring(3);
+    return removeTigNotTiger(substr);
+  } else {
+    let substr = str.substring(1);
+    return lastchar + removeTigNotTiger(substr);
+  }
+}
 function removeA() {
   let str1 = "sedaadrvafesa";
   let str2 = "adsfslfmtigersdsl";
+  let str3 = "sdnskdtigdksdks";
   //   console.log(helperRemoveA2(str1));
-  console.log(removeTiger(str2));
+  //   console.log(removeTiger(str2));
+  console.log(removeTigNotTiger(str3));
 }
 removeA();
