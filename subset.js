@@ -15,10 +15,14 @@ function helperRemoveA2(str) {
   if (str == "") {
     return "";
   }
-  if (str[0] !== "a") {
-    return str[0] + helperRemoveA(str.substring(1));
+  let substr = str.substring(1);
+  let lastchar = str[0];
+
+  if (lastchar === "a") {
+    return helperRemoveA2(substr);
+  } else {
+    return lastchar + helperRemoveA2(substr);
   }
-  return helperRemoveA(str.substring(1));
 }
 function removeA() {
   let ans = "";
