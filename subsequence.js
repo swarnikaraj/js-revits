@@ -40,17 +40,33 @@ function returnArrayOfSub2(init, str) {
   return [...left, ...right];
 }
 // include ascii value as well
-function retunArrayOfSub3(init, str) {
+function returnArrayOfSub3(init, str) {
   if (str == "") {
     return [init];
   }
   let lastchar = str[0];
   let askci = lastchar.charCodeAt(0);
-  let left = retunArrayOfSub3(init + lastchar, str.substring(1));
-  let right = retunArrayOfSub3(init, str.substring(1));
-  let ask = retunArrayOfSub3(init + askci, str.substring(1));
+  let left = returnArrayOfSub3(init + lastchar, str.substring(1));
+  let right = returnArrayOfSub3(init, str.substring(1));
+  let ask = returnArrayOfSub3(init + askci, str.substring(1));
   return [...left, ...right, ...ask];
 }
 
-console.log(retunArrayOfSub3("", str1));
-console.log("a" + 0);
+console.log(returnArrayOfSub2("", str1));
+
+function subsetOfStr(str) {
+  var str1 = str.split("").sort();
+  var main = new Array();
+  main.push([]);
+
+  for (let i = 0; i < str1.length; i++) {
+    let outer = [...main];
+    for (let j = 0; j < outer.length; j++) {
+      var inner = Array.from(outer[j]);
+      inner.push(str1[i]);
+      main.push(inner);
+    }
+  }
+
+  console.log(main);
+}
