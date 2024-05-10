@@ -45,7 +45,29 @@ function mazeproblem3(processed, r, c) {
   }
   return res;
 }
+console.log(mazeproblem3("", 3, 3));
 
 // return path if goinG horizontal H vertical V and diagonal D
+function mazeproblem4(processed, r, c) {
+  if (r == 1 && c == 1) {
+    let ans = new Array();
+    ans.push(processed);
+    return ans;
+  }
+  let res = new Array();
+  if (r > 1) {
+    let sol1 = mazeproblem4(processed + "V", r - 1, c);
+    res = [...res, ...sol1];
+  }
+  if (c > 1) {
+    let sol2 = mazeproblem4(processed + "H", r, c - 1);
+    res = [...res, ...sol2];
+  }
+  if (c > 1 && r > 1) {
+    let sol3 = mazeproblem4(processed + "D", r - 1, c - 1);
+    res = [...res, ...sol3];
+  }
+  return res;
+}
 
-console.log(mazeproblem3("", 3, 3));
+console.log(mazeproblem4("", 3, 3));
