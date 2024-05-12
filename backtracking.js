@@ -71,3 +71,40 @@ function mazeproblem4(processed, r, c) {
 }
 
 console.log(mazeproblem4("", 3, 3));
+// onstacles in maze
+// true means you can move and false means you cannot move
+// initially u r at 0,0
+// you have to reach at 5,5
+// print the path
+
+let board = new Array();
+for (i = 1; i <= 5; i++) {
+  let inner = new Array(5).fill(true);
+
+  board.push(inner);
+}
+board[2][3] = false;
+console.log(board);
+function mazeproblem5(p, r, c, maze) {
+  if (r == maze.length - 1 && c == maze[0].length - 1) {
+    console.log(p);
+    return;
+  }
+
+  if (!maze[r][c]) {
+    return;
+  }
+  if (r < maze.length - 1) {
+    mazeproblem5(p + "V", r + 1, c, maze);
+  }
+  if (c < maze[0].length - 1) {
+    mazeproblem5(p + "H", r, c + 1, maze);
+  }
+  if (r < maze.length - 1 && c < maze[0].length - 1) {
+    mazeproblem5(p + "D", r + 1, c + 1, maze);
+  }
+}
+mazeproblem5("", 0, 0, board);
+
+// print the path when it has option to move back up down right via 1 ,2,3,4... and so on
+// also print the path in a matrix
