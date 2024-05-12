@@ -120,9 +120,8 @@ function printAllPath(p, r, c, maze, path, step) {
       console.log(path[i]);
     }
 
-    console.log();
     console.log(p);
-
+    console.log();
     return;
   }
 
