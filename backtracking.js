@@ -8,7 +8,7 @@ function mazeproblem1(r, c) {
   let right = mazeproblem1(r, c - 1);
   return left + right;
 }
-console.log(mazeproblem1(3, 3));
+// console.log(mazeproblem1(3, 3));
 
 // print all the path to reach 0,0
 
@@ -25,7 +25,7 @@ function mazeproblem2(processed, r, c) {
     mazeproblem2(processed + "R", r, c - 1);
   }
 }
-mazeproblem2("", 3, 3);
+// mazeproblem2("", 3, 3);
 // return path in a  array
 function mazeproblem3(processed, r, c) {
   if (r == 1 && c == 1) {
@@ -45,7 +45,7 @@ function mazeproblem3(processed, r, c) {
   }
   return res;
 }
-console.log(mazeproblem3("", 3, 3));
+// console.log(mazeproblem3("", 3, 3));
 
 // return path if goinG horizontal H vertical V and diagonal D
 function mazeproblem4(processed, r, c) {
@@ -70,7 +70,7 @@ function mazeproblem4(processed, r, c) {
   return res;
 }
 
-console.log(mazeproblem4("", 3, 3));
+// console.log(mazeproblem4("", 3, 3));
 // onstacles in maze
 // true means you can move and false means you cannot move
 // initially u r at 0,0
@@ -83,8 +83,8 @@ for (i = 1; i <= 5; i++) {
 
   board.push(inner);
 }
-board[2][3] = false;
-console.log(board);
+// board[2][3] = false;
+// console.log(board);
 function mazeproblem5(p, r, c, maze) {
   if (r == maze.length - 1 && c == maze[0].length - 1) {
     console.log(p);
@@ -104,7 +104,49 @@ function mazeproblem5(p, r, c, maze) {
     mazeproblem5(p + "D", r + 1, c + 1, maze);
   }
 }
-mazeproblem5("", 0, 0, board);
+// mazeproblem5("", 0, 0, board);
 
 // print the path when it has option to move back up down right via 1 ,2,3,4... and so on
 // also print the path in a matrix
+// very very important
+
+var maze = Array.from({ length: 4 }, () => Array(4).fill(true));
+var path = Array.from({ length: 4 }, () => Array(4).fill(0));
+
+function printAllPath(p, r, c, maze, path, step) {
+  if (c == maze.length - 1 && r == maze[0].length - 1) {
+    path[r][c] = step;
+    for (let i = 0; i < path.length; i++) {
+      console.log(path[i]);
+    }
+
+    console.log();
+    console.log(p);
+
+    return;
+  }
+
+  // mark all the path
+  if (!maze[r][c]) {
+    return;
+  }
+
+  maze[r][c] = false;
+  path[r][c] = step;
+  // conditon to move right
+  if (c < maze.length - 1) {
+    printAllPath(p + "R", r, c + 1, maze, path, step + 1);
+  }
+  // conditon to move down
+  if (r < maze[0].length - 1) {
+    printAllPath(p + "D", r + 1, c, maze, path, step + 1);
+  }
+  //conditon to move up
+  if (r > 0) {
+    printAllPath(p + "U", r - 1, c, maze, path, step + 1);
+  }
+
+  path[r][c] = 0;
+  maze[r][c] = true;
+}
+printAllPath("", 0, 0, maze, path, 1);
