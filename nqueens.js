@@ -1,6 +1,6 @@
 // given n*n matrix given n queens to place in the matrix. tell me how  many ways to put them
 
-let board = Array.from({ length: 8 }, () => new Array(8).fill(false));
+let board = Array.from({ length: 4 }, () => new Array(4).fill(false));
 
 function isSafe(board, row, col) {
   for (let i = 0; i < row; i++) {

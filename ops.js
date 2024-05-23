@@ -40,3 +40,21 @@ const animal3 = new Animal3(2, 4, 8);
 
 console.log(animal3, "from class");
 animal3.getage();
+
+class Counter {
+  #count = 0; // Private field
+
+  increment() {
+    this.#count++;
+    console.log(this.#count);
+  }
+
+  #decrement() {
+    // Private method
+    this.#count--;
+  }
+}
+
+let counter = new Counter();
+counter.increment(); // 1
+// counter.#decrement(); // SyntaxError: Private field '#decrement' must be declared in an enclosing class
